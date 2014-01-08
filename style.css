@@ -1,0 +1,223 @@
+/*
+Theme Name: Sportimo Premium Theme
+Theme URI: http://sportimo.orange-themes.com/
+Description: Sportimo Premium Wordpress Theme
+Author: Orange Themes
+Author URI: http://www.orange-themes.com/
+Version: 1.2.2
+Tags: 
+License: GNU General Public License
+License URI: README_License.txt
+*/
+
+
+/** Wordpress default clases */
+
+.wp-caption { background: #f1f1f1; line-height: 18px; margin-bottom: 20px; max-width: 632px !important; /* prevent too-wide images from breaking layout */ padding: 4px; text-align: center; }
+
+.wp-caption-text { font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif; }
+
+.sticky { background: #f2f7fc; border-top: 4px solid #000; margin-left: -20px; margin-right: -20px; padding: 18px 20px; }
+
+.gallery-caption { color: #888; font-size: 12px; margin: 0 0 12px; }
+
+
+
+.main-menu-wrapper ul ul li a i { font-style: normal!important; }
+
+
+ul li a i { font-style: normal; }
+
+
+.gal-last-image  .loading img {
+	opacity:0.6;
+	filter:alpha(opacity=60);
+}
+
+.gal-last-image .loading {
+	display:inline-block;
+	background:#fff url(./images/loading.gif) no-repeat center center;
+	line-height:0px;
+	width:auto;
+}
+
+.port-last-image .loading {
+	display:inline-block;
+	background:#fff url(./images/loading.gif) no-repeat center center;
+	line-height:0px;
+	width:auto;
+}
+
+.port-last-image  .loading img {
+	opacity:0.6;
+	filter:alpha(opacity=60);
+}
+
+/* isotope transition styles */
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+          transition-property:         transform, opacity;
+}
+  
+#infscr-loading {
+	background: -moz-linear-gradient(center top , #747D84 0%, #434F56 100%) repeat scroll 0 0 transparent;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	bottom: 0;
+	font-size: 0.8em;
+	font-style: normal;
+	font-weight: normal;
+	height: 50px;
+	left: 50%;
+	margin-left: -45px;
+	padding-top: 20px;
+	position: fixed;
+	text-align: center;
+	z-index: 1000;
+	width: 90px;
+	background-repeat:no-repeat;
+	background-position: center center;
+}
+	
+img { height: auto !important; }
+
+/* =WordPress Core
+-------------------------------------------------------------- */
+.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+.alignright {
+    float:right;
+    margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+a img.alignright {
+    float: right;
+    margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 5px 3px 10px;
+    text-align: center;
+}
+
+.wp-caption.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+    margin: 5px 0 20px 20px;
+}
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    font-size: 11px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
+}
+
+.bypostauthor {}
+
+.details-error { 
+	width: 100%; 
+	float: left; 
+	padding: 4px; 
+	margin: 5px 0 5px 0; 
+	background-color: #F5F5F5; 
+	border: 1px solid #333333; 
+	-moz-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius:5px;
+	-webkit-border-radius:5px;
+	height: 20px;
+	text-align: center;
+}
+.details-error p { 
+	padding: 0 auto 0 auto; 
+	margin: 0; color: #333333; 
+	font-size: 100%; 
+	align: center;
+}
+.details-error a { 
+	color: #333333; 
+}
+/* ADD EVENT FORM */
+.addevent { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.addevent { margin: 0 70px 0 70px; }
+.addevent .form-header { margin: 20px 0 0 0; border-top: 1px solid #0066CC ; border-bottom: 1px solid #0066CC; height: 20px; background-color: #D7EEFC; color: #0099ff; padding: 5px 15px 5px 15px; }
+/*.addevent .form-item { border-bottom: 1px dashed #cccccc; height: 40px; background-color: #FAFAFA; padding: 10px 15px 5px 15px; font-size: 100%; color: #666666;}
+*/.addevent .form-item { float: left; width: 100%;  border-bottom: 1px dashed #cccccc; min-height: 40px; background-color: #FAFAFA; padding: 10px 15px 5px 15px; font-size: 100%; color: #666666;}
+.addevent .form-item-large { float: left; width: 100%; border-bottom: 1px dashed #cccccc; height: 120px; background-color: #FAFAFA; padding: 10px 15px 5px 15px; font-size: 100%; color: #666666;}
+.addevent label { float: left; width: 150px; font-family: 'Doppio One', sans-serif; font-size: 100%; color: #333333; }
+.addevent input { float: left; color: #666666; /*vertical-align: text-middle;*/ padding: 3px; font-family: 'Doppio One', sans-serif;s font-size: 100%; width: 330px; /*font-weight: 100;*/ }
+.addevent .input-submit { float: left; clear: both; margin: 10px 0 20px 170px; color: #000000; }
+.addevent .input-wrap { float: left; width: 400px; }
+.addevent .btn_submit { font-weight: normal; }
+.addevent .multipleCategories li { float: left; list-style: none; }
+.addevent .multipleCategories input { float: left; width: 50px;}
+.addevent .multipleCategories label { float: left; width: 190px; }
+.addevent .displaySecondary { padding: 10px 0 10px 0; float: left; color: #666666; width: 650px;}
+.addevent .item-description { width: 200px; float: left;}
