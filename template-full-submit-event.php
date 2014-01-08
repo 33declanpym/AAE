@@ -31,7 +31,7 @@ Template Name: Full Submit Event
 <option value="Triathlon">Triathlon</option>
 </select>				<br />
 		</div>
-			<b>Select a sport.</b><br />
+			<b>Select a sport.</b><span class="errorMsg">* <?php echo $eventSportErr; ?></span><br />
 		</div>
 		<div class="form-item"><label for="eventDay">Date:</label>
 			
@@ -84,15 +84,15 @@ Template Name: Full Submit Event
 <option value="2016">2016</option>
 <option value="2017">2017</option>
 </select>			</div>
-			<b>Select the event date</b>
+			<b>Select the event date</b><span class="errorMsg">* <?php echo $eventDayErr; echo $eventMonthErr; echo $eventYearErr; ?></span>
 		</div>
 		<div class="form-item"><label for="eventName">Event Name:</label>
 			<div class="input-wrap"><input name="eventName" type="text" id="add_eventName" size="25" maxlength="75" /></div>
-			<b>Enter the event name</b>
+			<b>Enter the event name</b><span class="errorMsg">* <?php echo $eventNameErr; ?></span>
 		</div>
 		<div class="form-item"><label for="eventLocation">Location:</label>
 			<div class="input-wrap"><input name="eventLocation" type="text" id="add_eventLocation" size="25" maxlength="75" /></div>
-			<b>Enter the event location</b><br /><span class="item-description">If multiple locations, enter the start location.</span>
+			<b>Enter the event location</b><span class="errorMsg">* <?php echo $eventLocationErr; ?></span><br /><span class="item-description">If multiple locations, enter the start location.</span>
 		</div>
 		<div class="form-item"><label for="eventState">State:</label>
 			<div class="input-wrap">
@@ -106,23 +106,23 @@ Template Name: Full Submit Event
 <option value="NT">NT</option>
 <option value="INT">INT</option>
 </select>			</div>
-		<b>Select the state</b><br />If outside Australia, select 'INT'.
+		<b>Select the state</b><span class="errorMsg">* <?php echo $eventStateErr; ?></span><br />If outside Australia, select 'INT'.
 		</div>
 		<div class="form-item"><label for="eventDistance">Distance:</label>
 			<div class="input-wrap"><input name="eventDistance" type="text" id="add_eventDistance" size="25" maxlength="75" /></div>
-			<b>Enter the race distance</b><br />Use abbreviations if necessary.
+			<b>Enter the race distance</b><span class="errorMsg">* <?php echo $eventDistanceErr; ?></span><br />Use abbreviations if necessary.
 		</div>
 		<div class="form-item-large"><label for="eventDescription">Description:</label>
 			<div class="input-wrap"><textarea name="eventDescription" rows="6" id="add_eventDescription" cols="40" maxlength="300"></textarea></div>
-			<b>Enter a brief description of the event.</b>
+			<b>Enter a brief description of the event.</b><span class="errorMsg">* <?php echo $eventDescriptionErr; ?></span>
 		</div>
 		<div class="form-item"><label for="eventURL">URL:</label>
 			<div class="input-wrap"><input name="eventURL" type="text" id="add_eventURL" value="http://" size="25" maxlength="200" /></div>
-			<b>Enter the event website address</b><br />For example, http://www.yourevent.com
+			<b>Enter the event website address</b><span class="errorMsg">* <?php echo $eventURLErr; ?></span><br />For example, http://www.yourevent.com
 		</div>
-		<div class="form-item"><label for="eventSpam">Is snow hot or cold?</label>
+		<div class="form-item"><label for="eventSpam">What colour is the sky</label>
 			<div class="input-wrap"><input name="eventSpam" type="text" size="25" maxlength="75" /></div>
-			<b>Anti-Spam</b>
+			<b>Anti-Spam</b><span class="errorMsg">* <?php echo $eventSpamErr; ?></span>
 		</div>
 		<input name="btn_submit" type="submit" id="submit" value="Add Event" class="input-submit" />
 	</form>
