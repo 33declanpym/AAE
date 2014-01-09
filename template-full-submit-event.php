@@ -17,7 +17,7 @@ Template Name: Full Submit Event
 // Initialize variables and set to empty strings
 $eventSport=$eventDay=$eventMonth=$eventYear=$eventName=$eventLocation=$eventState=$eventDescription=$eventURL=$eventSpam="";
 $eventSportErr=$eventDayErr=$eventMonthErr=$eventYearErr=$eventNameErr=$eventLocationErr=$eventStateErr=$eventDescriptionErr=$eventURLErr=$eventSpamErr="";
-$eventAddSuccess="";
+$eventAddSuccess=$sqlSuccess="";
 $valid = true;
 
 function test_input($data) {
@@ -120,7 +120,9 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
   //if valid then redirect
   if($valid){
    //header('Location: http://www.activeausevents.com.au/cycling/');
-   $eventAddSuccess = "You have successfully added this event; Would you like to add another?";	  
+   $sqlSuccess = insert_new_event($eventSport, $eventDay, $eventMonth, $eventYear, $eventName, $eventLocation, $eventState, $eventDistance, $eventDescription, $eventURL);  
+   //echo $sqlSuccess;
+   $eventAddSuccess = "You have successfully added this event; Would you like to add another? $sqlSuccess";
    //exit();
   }
 }
@@ -135,13 +137,13 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
 				<select name="eventSport" id="add_eventSport"><option value="<?php $eventSport ?>"><?php echo empty($eventSport) ? 'Select...' : $eventSport; ?></option>
 					<option value="Adventure Racing">Adventure Racing</option>
 					<option value="Aquathlon">Aquathlon</option>
-					<option value="Cycling">Cycling</option>
+					<option value="Cycle">Cycle</option>
 					<option value="Duathlon">Duathlon</option>
 					<option value="Mountain Bike - XC">Mountain Bike - XC</option>
 					<option value="Multisport - General">Multisport - General</option>
 					<option value="Open Water Swim">Open Water Swim</option>
 					<option value="Orienteering">Orienteering</option>
-					<option value="Running">Running</option>
+					<option value="Run">Run</option>
 					<option value="Triathlon">Triathlon</option>
 				</select>				
 				<br />
@@ -238,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
 		</div>
 		<div class="form-item-large"><label for="eventDescription">Description:</label>
 			<div class="input-wrap"><textarea name="eventDescription" rows="6" id="add_eventDescription" cols="40" maxlength="1000"><?php echo empty($eventDescription) ? '' : $eventDescription; ?></textarea></div>
-			<b>Enter a brief description of the event.</b><span class="errorMsg">* <?php echo $eventDescriptionErr; ?></span>
+			<b>Enter a description of the event, make sure to include the time that it starts.</b><span class="errorMsg">* <?php echo $eventDescriptionErr; ?></span>
 		</div>
 		<div class="form-item"><label for="eventURL">URL:</label>
 			<div class="input-wrap"><input name="eventURL" type="text" id="add_eventURL" value="<?php echo empty($eventURL) ? 'Http://' : $eventURL; ?>" size="25" maxlength="200" /></div>

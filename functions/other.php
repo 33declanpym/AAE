@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /* -------------------------------------------------------------------------*
  * 								AAE EVENT DATA 								*
+ * Possible format values: %s as string; %d as integer (whole number); 		*
+ * and %f as float															*
  * -------------------------------------------------------------------------*/
 
 function select_all_events($category)	{
@@ -32,6 +34,39 @@ function select_event_details($id)	{
 	$table_name = $wpdb->prefix."aaeevents";
 	$sql = $wpdb->get_results("select * from $table_name where id = '" . $id . "'");
 	return $sql;
+}
+
+function insert_new_event($eventSport, $eventDay, $eventMonth, $eventYear, $eventName, $eventLocation, $eventState, $eventDistance, $eventDescription, $eventURL) {
+	global $wpdb;
+	$eventDate = $eventYear."-".$eventMonth."-".$eventDay;
+	$table_name = $wpdb->prefix."aaeevents";
+	$sql = $wpdb->insert( 
+		$table_name, 
+		array( 
+			'category' => $eventSport, 
+			'name' => $eventName,
+			'location' => $eventLocation,
+			'state' => $eventState,
+			'distance' => $eventDistance,
+			'description' => $eventDescription,
+			'website' => $eventURL,		
+			'date' => $eventDate,
+			'active' => 0	 
+		), 
+		array( 
+			'%s', 
+			'%s',
+			'%s', 
+			'%s', 
+			'%s', 
+			'%s', 
+			'%s', 
+			'%s', 
+			'%d',
+		) 
+	);
+	if ($sql)
+		return true;
 }
 
 /* -------------------------------------------------------------------------*
