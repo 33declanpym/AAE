@@ -221,4 +221,4 @@ a img.aligncenter {
 .addevent .multipleCategories label { float: left; width: 190px; }
 .addevent .displaySecondary { padding: 10px 0 10px 0; float: left; color: #666666; width: 650px;}
 .addevent .item-description { width: 200px; float: left;}
-.errorMsg { color: #FF0000;}
+.addevent .errorMsg { color: #FF0000;}

@@ -5,8 +5,6 @@ Template Name: Full Submit Event
 ?>
 <?php get_header(); ?>
 <?php get_template_part(THEME_INCLUDES.'top'); ?>
-
-
 <?php wp_reset_query(); ?>
 	<div class="main-white-block">
 		<div class="main-block full-width">
@@ -15,27 +13,144 @@ Template Name: Full Submit Event
 				<div class="panel-block">
 					<?php if(get_the_title()) { ?><h2><?php the_title();?></h2><?php } ?>
 					<div class="tha-content" style="height: 670px;">
+						<?php
+// Initialize variables and set to empty strings
+$eventSport=$eventDay=$eventMonth=$eventYear=$eventName=$eventLocation=$eventState=$eventDescription=$eventURL=$eventSpam="";
+$eventSportErr=$eventDayErr=$eventMonthErr=$eventYearErr=$eventNameErr=$eventLocationErr=$eventStateErr=$eventDescriptionErr=$eventURLErr=$eventSpamErr="";
+$eventAddSuccess="";
+$valid = true;
+
+function test_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+}
+
+if ($_SERVER['REQUEST_METHOD']== "POST") {
+   //eventSport
+   if (empty($_POST["eventSport"])) {
+      $eventSportErr = " Event category is required.";
+      $valid = false;
+   }
+   else {
+      $eventSport = test_input($_POST["eventSport"]);
+   }
+   //eventDay
+   if (empty($_POST["eventDay"])) {
+      $eventDayErr = " Day is required.";
+      $valid = false;
+   }
+   else {
+   	  $eventDay = test_input($_POST["eventDay"]);
+   }
+   //eventMonth
+   if (empty($_POST["eventMonth"])) {
+      $eventMonthErr = " Month is required.";
+      $valid = false;
+   }
+   else {
+   	  $eventMonth = test_input($_POST["eventMonth"]);
+   }
+   //eventYear
+   if (empty($_POST["eventYear"])) {
+      $eventYearErr = " Year is required.";
+      $valid = false;
+   }
+   else {
+   	  $eventYear = test_input($_POST["eventYear"]);
+   }
+   //eventName
+   if (empty($_POST["eventName"])) {
+      $eventNameErr = " Event name is required.";
+      $valid = false;
+   }
+   else {
+   	  $eventName = test_input($_POST["eventName"]);
+   }
+   //eventLocation
+   if (empty($_POST["eventLocation"])) {
+      $eventLocationErr = " Location is required.";
+      $valid = false;
+   }
+   else {
+   	  $eventLocation = test_input($_POST["eventLocation"]);
+   }
+   //eventState
+   if (empty($_POST["eventState"])) {
+      $eventStateErr = " State is required.";
+      $valid = false;
+   }
+   else {
+   	  $eventState = test_input($_POST["eventState"]);
+   }
+   //eventDistance
+   if (empty($_POST["eventDistance"])) {
+      $eventDistanceErr = " Distance is required.";
+      $valid = false;
+   }
+   else {
+   	  $eventDistance = test_input($_POST["eventDistance"]);
+   }
+   //eventDescription
+   if (empty($_POST["eventDescription"])) {
+      $eventDescriptionErr = " Description is required.";
+      $valid = false;
+   }
+   else {
+   	  $eventDescription = test_input($_POST["eventDescription"]);
+   }
+   //eventURL
+   if (empty($_POST["eventURL"])) {
+      $eventURLErr = " URL is required.";
+      $valid = false;
+   }
+   else {
+   	  $eventURL = test_input($_POST["eventURL"]);
+   }
+   //eventSpam
+   if (empty($_POST["eventSpam"])) {
+      $eventSpamErr = " Answer is required.";
+      $valid = false;
+   }
+   else {
+   	  $eventSpam = test_input($_POST["eventSpam"]);
+   }
+   
+  //if valid then redirect
+  if($valid){
+   //header('Location: http://www.activeausevents.com.au/cycling/');
+   $eventAddSuccess = "You have successfully added this event; Would you like to add another?";	  
+   //exit();
+  }
+}
+//END FORM VALIDATION
+?>
 	<div class="addevent">
-	<form action="./add-event-done.php" method="POST" id="addEventForm" name="addEventForm" onsubmit="return checkData();">
+		
+	<form action="" method="POST" id="addEventForm" name="addEventForm">
+		<span class="errorMsg"><?php echo $eventAddSuccess; ?></span>
 		<div class="form-item"><label for="eventSport">Sport:</label>
 			<div class="input-wrap">
-				<select name="eventSport" id="add_eventSport"><option value="">Select ...</option><option value="Adventure Racing">Adventure Racing</option>
-<option value="Aquathlon">Aquathlon</option>
-<option value="Cycling">Cycling</option>
-<option value="Duathlon">Duathlon</option>
-<option value="Mountain Bike - XC">Mountain Bike - XC</option>
-<option value="Multisport - General">Multisport - General</option>
-<option value="Open Water Swim">Open Water Swim</option>
-<option value="Orienteering">Orienteering</option>
-<option value="Running">Running</option>
-<option value="Triathlon">Triathlon</option>
-</select>				<br />
-		</div>
-			<b>Select a sport.</b><span class="errorMsg">* <?php echo $eventSportErr; ?></span><br />
+				<select name="eventSport" id="add_eventSport"><option value=""><?php echo empty($eventSport) ? 'Select...' : $eventSport; ?></option>
+					<option value="Adventure Racing">Adventure Racing</option>
+					<option value="Aquathlon">Aquathlon</option>
+					<option value="Cycling">Cycling</option>
+					<option value="Duathlon">Duathlon</option>
+					<option value="Mountain Bike - XC">Mountain Bike - XC</option>
+					<option value="Multisport - General">Multisport - General</option>
+					<option value="Open Water Swim">Open Water Swim</option>
+					<option value="Orienteering">Orienteering</option>
+					<option value="Running">Running</option>
+					<option value="Triathlon">Triathlon</option>
+				</select>				
+				<br />
+			</div>
+			<b>Select a sport.</b><span class="errorMsg" >* <?php echo $eventSportErr; ?></span><br />
 		</div>
 		<div class="form-item"><label for="eventDay">Date:</label>
 			
-			<div class="input-wrap"><select name="eventDay" id="add_eventDay"><option value="">dd</option><option value="1">1</option>
+			<div class="input-wrap"><select name="eventDay" id="add_eventDay"><option value=""><?php echo empty($eventDay) ? 'dd' : $eventDay; ?></option><option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
 <option value="4">4</option>
@@ -66,7 +181,8 @@ Template Name: Full Submit Event
 <option value="29">29</option>
 <option value="30">30</option>
 <option value="31">31</option>
-</select><select name="eventMonth" id="add_eventMonth"><option value="">Month ...</option><option value="1">January</option>
+</select><select name="eventMonth" id="add_eventMonth"><option value=""><?php echo empty($eventMonth) ? 'Month' : $eventMonth; ?></option>
+<option value="1">January</option>
 <option value="2">February</option>
 <option value="3">March</option>
 <option value="4">April</option>
@@ -78,7 +194,7 @@ Template Name: Full Submit Event
 <option value="10">October</option>
 <option value="11">November</option>
 <option value="12">December</option>
-</select><select name="eventYear" id="add_eventYear"><option value="">Year</option><option value="2013">2013</option>
+</select><select name="eventYear" id="add_eventYear"><option value=""><?php echo empty($eventYear) ? 'Year' : $eventYear; ?></option>
 <option value="2014">2014</option>
 <option value="2015">2015</option>
 <option value="2016">2016</option>
@@ -124,7 +240,7 @@ Template Name: Full Submit Event
 			<div class="input-wrap"><input name="eventSpam" type="text" size="25" maxlength="75" /></div>
 			<b>Anti-Spam</b><span class="errorMsg">* <?php echo $eventSpamErr; ?></span>
 		</div>
-		<input name="btn_submit" type="submit" id="submit" value="Add Event" class="input-submit" />
+		<input name="btn_submit" type="submit" id="submit" value="Submit" class="input-submit" />
 	</form>
 	</div>
 					</div>
