@@ -115,6 +115,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
    }
    else {
    	  $eventSpam = test_input($_POST["eventSpam"]);
+	  //if ($eventSpam != "blue" | "Blue")
    }
    
   //if valid then redirect
@@ -122,7 +123,12 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
    //header('Location: http://www.activeausevents.com.au/cycling/');
    $sqlSuccess = insert_new_event($eventSport, $eventDay, $eventMonth, $eventYear, $eventName, $eventLocation, $eventState, $eventDistance, $eventDescription, $eventURL);  
    //echo $sqlSuccess;
-   $eventAddSuccess = "You have successfully added this event; Would you like to add another? $sqlSuccess";
+   if ($sqlSuccess)
+   	$eventAddSuccess = "You have successfully added this event; Would you like to add another?";
+   else {
+   	$eventAddSuccess = "<H2>Oops! Sorry mate, something went wrong! Please try again.";
+   }
+   	
    //exit();
   }
 }
