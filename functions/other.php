@@ -32,7 +32,7 @@ function select_category_events($category)	{
 function select_event_details($id)	{
 	global $wpdb;
 	$table_name = $wpdb->prefix."aaeevents";
-	$sql = $wpdb->get_results("select * from $table_name where id = '" . $id . "'");
+	$sql = $wpdb->get_results("select * from $table_name where id = '" . $id . "' ");
 	return $sql;
 }
 

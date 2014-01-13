@@ -119,18 +119,17 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
    }
    
   //if valid then redirect
-  if($valid){
-   //header('Location: http://www.activeausevents.com.au/cycling/');
-   $sqlSuccess = insert_new_event($eventSport, $eventDay, $eventMonth, $eventYear, $eventName, $eventLocation, $eventState, $eventDistance, $eventDescription, $eventURL);  
-   //echo $sqlSuccess;
-   if ($sqlSuccess)
-   	$eventAddSuccess = "You have successfully added this event; Would you like to add another?";
-   else {
-   	$eventAddSuccess = "<H2>Oops! Sorry mate, something went wrong! Please try again.";
-   }
-   	
+   if($valid){
+	   //header('Location: http://www.activeausevents.com.au');
+	   $sqlSuccess = insert_new_event($eventSport, $eventDay, $eventMonth, $eventYear, $eventName, $eventLocation, $eventState, $eventDistance, $eventDescription, $eventURL);  
+	   //echo $sqlSuccess;
+	   if ($sqlSuccess)
+			$eventAddSuccess = "<H3>You have successfully added this event. Would you like to add another?";
+	   else {
+	   		$eventAddSuccess = "<H3>Oops! Sorry mate, something went wrong! Please try again.";
+	   }	
    //exit();
-  }
+   }
 }
 //END FORM VALIDATION
 ?>
@@ -145,9 +144,8 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
 					<option value="Aquathlon">Aquathlon</option>
 					<option value="Cycle">Cycle</option>
 					<option value="Duathlon">Duathlon</option>
-					<option value="Mountain Bike - XC">Mountain Bike - XC</option>
-					<option value="Multisport - General">Multisport - General</option>
-					<option value="Open Water Swim">Open Water Swim</option>
+					<option value="Triathalon">Triathalon</option>
+					<option value="Swim">Swim</option>
 					<option value="Orienteering">Orienteering</option>
 					<option value="Run">Run</option>
 					<option value="Triathlon">Triathlon</option>
@@ -249,7 +247,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
 			<b>Enter a description of the event, make sure to include the time that it starts.</b><span class="errorMsg">* <?php echo $eventDescriptionErr; ?></span>
 		</div>
 		<div class="form-item"><label for="eventURL">URL:</label>
-			<div class="input-wrap"><input name="eventURL" type="text" id="add_eventURL" value="<?php echo empty($eventURL) ? 'Http://' : $eventURL; ?>" size="25" maxlength="200" /></div>
+			<div class="input-wrap"><input name="eventURL" type="text" id="add_eventURL" value="<?php echo empty($eventURL) ? 'http://' : $eventURL; ?>" size="25" maxlength="200" /></div>
 			<b>Enter the event website address</b><span class="errorMsg">* <?php echo $eventURLErr; ?></span><br />For example, http://www.yourevent.com
 		</div>
 		<div class="form-item"><label for="eventSpam">What colour is the sky</label>

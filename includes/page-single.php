@@ -62,7 +62,7 @@
 							} else {
 								echo "<table>";
 								echo "<tr>";
-									echo "<td><b>ID</td>";
+									//echo "<td><b>ID</td>";
 									echo "<td><b>Category</td>";
 									echo "<td><b>Name</td>";
 									echo "<td><b>Location</td>";
@@ -70,11 +70,16 @@
 								echo "</tr>";	
 								foreach ($events as $event){
 									echo "<tr>";
-										echo "<td>".$event->id."</td>";
+										//echo "<td>".$event->id."</td>";
 										echo "<td>".$event->category."</td>";
 										echo "<td>".$event->name."</td>";
 										echo "<td>".$event->location.", ".$event->state."</td>";
-										echo "<td><a href=".$website."View Details</a></td>";
+										//echo "<td><a href=".$website."View Details</a></td>";
+										echo "<td>"?>
+										<form action="" method="POST" id="addEventForm" name="addEventForm">
+											<input name="btn_submit" type="submit" id="submit" value="View Details" class="input-submit" />
+										</form>	</td>	
+								<?php
 									echo "</tr>";
 								}	
 								echo "</table>";
