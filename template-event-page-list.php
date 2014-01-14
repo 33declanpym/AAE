@@ -9,16 +9,13 @@
 	$user_ID = get_the_author_meta('id');
 	$posttags = get_the_tags();
 	
-	
 	$singleBanner = get_option(THEME_NAME."_single_banner");
 	$singleBannerCode = get_option(THEME_NAME."_single_banner_code");
 	
 	$shareAll = get_option(THEME_NAME."_share_all");
 	$shareSingle = get_post_meta( $post->ID, THEME_NAME."_share_single", true ); 
 ?>
-
-					<div class="main-white-block">
-						
+					<div class="main-white-block">						
 						<div class="main-block<?php OT_content_class($post->ID);?>">
 							<?php if (have_posts()) : ?>	
 							

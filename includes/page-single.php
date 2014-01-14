@@ -16,12 +16,9 @@
 	$shareAll = get_option(THEME_NAME."_share_all");
 	$shareSingle = get_post_meta( $post->ID, THEME_NAME."_share_single", true ); 
 ?>
-
-					<div class="main-white-block">
-						
+					<div class="main-white-block">					
 						<div class="main-block<?php OT_content_class($post->ID);?>">
 							<?php if (have_posts()) : ?>	
-							
 								<!-- BEGIN .panel-block -->
 								<div class="panel-block">
 									<h2><?php the_title(); ?></h2>
@@ -54,7 +51,7 @@
 										<?php the_content(); ?>
 										<!-- START NEW CONTENT -->
 						<?php 
-						$category = get_the_title(); 
+							$category = get_the_title(); 
 							$events = select_category_events($category);
 							$errors = array_filter($events);
 							if (empty($errors)) {
@@ -75,16 +72,17 @@
 										echo "<td>".$event->name."</td>";
 										echo "<td>".$event->location.", ".$event->state."</td>";
 										//echo "<td><a href=".$website."View Details</a></td>";
-										echo "<td>"?>
-										<form action="" method="POST" id="addEventForm" name="addEventForm">
+										echo "<td>";
+										$eventURL = "../event-details/?qml=".$event->id;?>
+										<form action="<?php echo $eventURL ?>" method="POST" id="addEventForm" name="addEventForm">
 											<input name="btn_submit" type="submit" id="submit" value="View Details" class="input-submit" />
 										</form>	</td>	
-								<?php
-									echo "</tr>";
+									</tr><?php
 								}	
 								echo "</table>";
 							}	
 						?>
+						
 						<!-- END NEW CONTENT -->
 								<?php if($shareAll == "show" || ($shareAll=="custom" && $shareSingle=="show")) { ?>
 									<div class="panel-breaking-line"></div>
