@@ -63,15 +63,17 @@
 									echo "<td><b>Category</td>";
 									echo "<td><b>Name</td>";
 									echo "<td><b>Location</td>";
+									echo "<td><b>Date</td>";
 									echo "<td><b>Details</td>";
 								echo "</tr>";	
 								foreach ($events as $event){
 									echo "<tr>";
+										$newDate = date("d-m-Y", strtotime($event->date));										
 										//echo "<td>".$event->id."</td>";
 										echo "<td>".$event->category."</td>";
 										echo "<td>".$event->name."</td>";
 										echo "<td>".$event->location.", ".$event->state."</td>";
-										//echo "<td><a href=".$website."View Details</a></td>";
+										echo "<td>".$newDate."</td>";
 										echo "<td>";
 										$eventURL = "../event-details/?qml=".$event->id;?>
 										<form action="<?php echo $eventURL ?>" method="POST" id="addEventForm" name="addEventForm">

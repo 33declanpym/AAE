@@ -63,8 +63,9 @@ Template Name: event-details
 								echo "<td>".$event->distance."</td>";
 							echo "</tr>";
 							echo "<tr>";	
-								echo "<td><b>Date</td>";
-								echo "<td>".$event->date."</td>";
+								echo "<td><b>Date</td>";								
+								$newDate = date("d-m-Y", strtotime($event->date));
+								echo "<td>".$newDate."</td>";
 							echo "</tr>";
 							echo "<tr>";	
 								echo "<td><b>Details</td>";
