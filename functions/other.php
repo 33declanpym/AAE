@@ -18,21 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 function select_all_events($category)	{
 	global $wpdb;
 	$table_name = $wpdb->prefix."aaeevents";
-	$sql = $wpdb->get_results("select * from $table_name");
+	$sql = $wpdb->get_results("select * from $table_name where active = '1'");
 	return $sql;
 } 
 
 function select_category_events($category)	{
 	global $wpdb;
 	$table_name = $wpdb->prefix."aaeevents";
-	$sql = $wpdb->get_results("select * from $table_name where category = '" . $category . "'");
+	$sql = $wpdb->get_results("select * from $table_name where category = '" . $category . "' AND  active = '1'");
 	return $sql;
 }
 
 function select_event_details($id)	{
 	global $wpdb;
 	$table_name = $wpdb->prefix."aaeevents";
-	$sql = $wpdb->get_results("select * from $table_name where id = '" . $id . "' ");
+	$sql = $wpdb->get_results("select * from $table_name where id = '" . $id . "' AND active = '1'");
 	return $sql;
 }
 
