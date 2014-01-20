@@ -15,8 +15,8 @@ Template Name: Full Submit Event
 					<div class="tha-content" style="height: 670px;">
 						<?php
 // Initialize variables and set to empty strings
-$eventSport=$eventDay=$eventMonth=$eventYear=$eventName=$eventLocation=$eventState=$eventDescription=$eventURL=$eventSpam="";
-$eventSportErr=$eventDayErr=$eventMonthErr=$eventYearErr=$eventNameErr=$eventLocationErr=$eventStateErr=$eventDescriptionErr=$eventURLErr=$eventSpamErr="";
+$eventSport=$eventDay=$eventMonth=$eventYear=$eventName=$eventLocation=$eventState=$eventDistance=$eventDescription=$eventURL=$eventSpam="";
+$eventSportErr=$eventDayErr=$eventMonthErr=$eventYearErr=$eventNameErr=$eventLocationErr=$eventStateErr=$eventDistanceErr=$eventDescriptionErr=$eventURLErr=$eventSpamErr="";
 $eventAddSuccess=$sqlSuccess="";
 $valid = true;
 
@@ -118,14 +118,27 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
 	  //if ($eventSpam != "blue" | "Blue")
    }
    
-  //if valid then redirect
+   //if valid then redirect
    if($valid){
 	   //header('Location: http://www.activeausevents.com.au');
 	   $sqlSuccess = insert_new_event($eventSport, $eventDay, $eventMonth, $eventYear, $eventName, $eventLocation, $eventState, $eventDistance, $eventDescription, $eventURL);  
 	   //echo $sqlSuccess;
-	   if ($sqlSuccess)
+	   if ($sqlSuccess) {
+			$to      = 'declan@activeausevents.com.au';
+			$subject = 'New event requires your approval';
+			$message = 'You have a new event to be approved' . "\r\n";
+			$message = $message . 'The new event name is: ' . $eventName . "\r\n";
+			$message = $message . 'Please go to http://www.activeausevents.com.au/phpmyadmin to activate the event' . "\r\n";
+			$message = $message . 'Event Details:' . "\r\n";
+			$headers = 'From: support@activeausevents.com.au' . "\r\n" .
+			    'Reply-To: support@activeausevents.com.au' . "\r\n" .
+			    'X-Mailer: PHP/' . phpversion();
+			
+			mail($to, $subject, $message, $headers);
 			$eventAddSuccess = "<H3>You have successfully added this event. Would you like to add another?";
-	   else {
+			$eventSport=$eventDay=$eventMonth=$eventYear=$eventName=$eventLocation=$eventState=$eventDistance=$eventDescription=$eventURL=$eventSpam="";
+			$eventAddSuccess=$sqlSuccess="";
+	   } else {
 	   		$eventAddSuccess = "<H3>Oops! Sorry mate, something went wrong! Please try again.";
 	   }	
    //exit();
