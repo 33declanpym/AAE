@@ -18,7 +18,7 @@
 					<div class="left-side-header">
 						<div class="vertical-middle">
 						<?php if($logo) { ?>
-							<h1 class="with-logo-bg" style="background-image:url(<?php echo $logo;?>);width:700px;height:130px;">
+							<h1 class="with-logo-bg" style="background-image:url(<?php echo $logo;?>);width:700px;height:83px;">
 								<a href="<?php echo home_url(); ?>"><?php OT_page_main_title(); ?></a>
 							</h1>
 						<?php } else { ?>
