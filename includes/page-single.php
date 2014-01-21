@@ -52,11 +52,13 @@
 										<!-- START NEW CONTENT -->
 						<?php 
 							$category = get_the_title(); 
-							$events = select_category_events($category);
+							$order = 'date';
+							$events = select_category_events($category, $order);
 							$errors = array_filter($events);
 							if (empty($errors)) {
 								echo "";	
 							} else {
+								ECHO $order;
 								echo "<table>";
 								echo "<tr>";
 									//echo "<td><b>ID</td>";

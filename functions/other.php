@@ -22,10 +22,11 @@ function select_all_events($category)	{
 	return $sql;
 } 
 
-function select_category_events($category)	{
+function select_category_events($category, $order)	{
 	global $wpdb;
 	$table_name = $wpdb->prefix."aaeevents";
-	$sql = $wpdb->get_results("select * from $table_name where category = '" . $category . "' AND  active = '1'");
+	$sql = $wpdb->get_results("select * from $table_name where category = '$category'  AND  active = '1' ORDER BY $order ");
+	//$sql = $wpdb->get_results("select * from $table_name where category = " . $category . "AND  active = '1' ORDER BY" . $order . "");
 	return $sql;
 }
 
