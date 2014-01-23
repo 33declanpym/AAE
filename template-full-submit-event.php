@@ -24,6 +24,7 @@ function test_input($data) {
    $data = trim($data);
    $data = stripslashes($data);
    $data = htmlspecialchars($data);
+   $data = pg_escape_string($data);
    return $data;
 }
 
@@ -137,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
 			mail($to, $subject, $message, $headers);
 			$eventAddSuccess = "<H3>You have successfully added this event. Would you like to add another?";
 			$eventSport=$eventDay=$eventMonth=$eventYear=$eventName=$eventLocation=$eventState=$eventDistance=$eventDescription=$eventURL=$eventSpam="";
-			$eventAddSuccess=$sqlSuccess="";
+			$sqlSuccess="";
 	   } else {
 	   		$eventAddSuccess = "<H3>Oops! Sorry mate, something went wrong! Please try again.";
 	   }	

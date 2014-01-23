@@ -52,31 +52,30 @@
 										<!-- START NEW CONTENT -->
 						<?php 
 							$category = get_the_title(); 
-							$order = 'date';
+							$order = (get_query_var('sort')) ? get_query_var('sort') : 'date';
+							$order = pg_escape_string($order);
 							$events = select_category_events($category, $order);
 							$errors = array_filter($events);
 							if (empty($errors)) {
 								echo "";	
 							} else {
-								ECHO $order;
-								echo "<table>";
+								echo "<table width=\"100%\">";
 								echo "<tr>";
-									//echo "<td><b>ID</td>";
-									echo "<td><b>Category</td>";
-									echo "<td><b>Name</td>";
-									echo "<td><b>Location</td>";
-									echo "<td><b>Date</td>";
-									echo "<td><b>Details</td>";
+									echo "<th><a href=\"{$_SERVER['PHP_SELF']}/$category/?sort=category\"><b>Category</b></a></th>";	
+									echo "<th><a href=\"{$_SERVER['PHP_SELF']}/$category/?sort=name\"><b>Name</b></a></th>";
+									echo "<th><a href=\"{$_SERVER['PHP_SELF']}/$category/?sort=state\"><b>Location</b></a></th>";
+									echo "<th><a href=\"{$_SERVER['PHP_SELF']}/$category/?sort=date\"><b>Date</b></a></th>";
+									echo "<th><b>Details</th>";
 								echo "</tr>";	
 								foreach ($events as $event){
 									echo "<tr>";
 										$newDate = date("d-m-Y", strtotime($event->date));										
 										//echo "<td>".$event->id."</td>";
-										echo "<td>".$event->category."</td>";
-										echo "<td>".$event->name."</td>";
-										echo "<td>".$event->location.", ".$event->state."</td>";
-										echo "<td>".$newDate."</td>";
-										echo "<td>";
+										echo "<td width=\"15%\">".$event->category."</td>";
+										echo "<td width=\"25%\">".$event->name."</td>";
+										echo "<td width=\"25%\">".$event->location.", ".$event->state."</td>";
+										echo "<td width=\"15%\">".$newDate."</td>";
+										echo "<td width=\"20%\">";
 										$eventURL = "../event-details/?qml=".$event->id;?>
 										<form action="<?php echo $eventURL ?>" method="POST" id="addEventForm" name="addEventForm">
 											<input name="btn_submit" type="submit" id="submit" value="View Details" class="input-submit" />
